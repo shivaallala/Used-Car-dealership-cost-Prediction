@@ -46,12 +46,11 @@ Our analysis aims to uncover insights into the factors driving used car prices, 
 
 ### Data Understand and Exploration:
 
-![Cars Info](C:\Users\shiva\OneDrive\Desktop\UC Berkeley\Used-Car-dealership-cost-Prediction\Images\Cars_info.png)
+![Cars Info](Used-Car-dealership-cost-Prediction/Images/Cars_info.png)
 
+![Numeric Features pairplot](Images/Numeric_features_pariplot.png)
 
-![Numeric Features pairplot]()
-
-![Categorical Feature realation to price]()
+![Categorical Feature realation to price](/Images/Categorical%20features%20relation%20to%20Price.png)
 
 This dataset analysis provides insights into various attributes of used cars, including region, manufacturer, model, condition, cylinders, fuel type, title status, transmission, drive, size, type, paint color, and state. These insights offer valuable information for understanding market trends, consumer preferences, and regional variations in the used car market.
 
@@ -66,7 +65,7 @@ This dataset analysis provides insights into various attributes of used cars, in
     - Ford has the highest count with 70985 entries, followed by Chevrolet (55064 entries) and Toyota (34202 entries).
     - Some manufacturers have relatively low counts, such as Ferrari (95 entries), Datsun (63 entries), and Morgan (3 entries).
 
-![Manufacturer by Average price]()
+![Manufacturer by Average price](/Images/manufacturer%20by%20average%20price.png)
 
 3. **Model**
     - The dataset includes a wide variety of car models.
@@ -114,16 +113,16 @@ This dataset analysis provides insights into various attributes of used cars, in
     - Some states have relatively few listings.
     -Imbalanced Distribution: Attributes with highly imbalanced distributions, where one or a few categories dominate the majority of the data, may not contribute much to the model's performance. For example, the "state" attribute has highly imbalanced distributions, with some states having significantly more observations than others. Region attribute plays a similar role as it poses insigificant relevance to the analysis or prediction. Also evaluating 'region' attribute's cardinality expresses the high degree of unique values, approximately 404 unique values. Based on this rationale, it is deamed appropreiate to remove 'region' as well.
 
-    ![State by Average Price]()
+    ![State by Average Price](/Images/State%20by%20Average%20price.png)
 
 These insights provide valuable information about the distribution of car attributes in the dataset. Further analysis can be conducted to explore market trends, consumer preferences, and regional variations.
 
 
  ##### Extreme outliers for price and odometer
 
- ![num features stats]()
+ ![num features stats](/Images/Num_feat_stats.png)
 
- ![price and odometer boxplot]()
+ ![price and odometer boxplot](/Images/Price%20and%20Odometer%20boxplot.png)
 
  The dataset's average car price stands at $75,199.03, with a maximum recorded price reaching a staggering $3,736,928,711. Similarly, the average odometer reading for cars in the dataset is approximately 98,043.33 miles, with the maximum odometer reading reported at 10,000,000 miles. It's noteworthy that both price and odometer readings exhibit outliers, suggesting the presence of extreme values that may significantly skew the overall averages.Not to mention 32,895 price records have the value 0. These outliers could potentially indicate unique or rare instances within the dataset, warranting careful consideration during any analytical or modeling endeavors.
 
@@ -180,7 +179,7 @@ Additionally, we'll remove records with incomplete data, retaining only those wi
 
 After our initial exploration and fine tuning of the business understanding, it is time to construct our final dataset prior to modeling. Here, we want to make sure to handle any integrity issues and cleaning, the engineering of new features, any transformations that we believe should happen (scaling, logarithms, normalization, etc.), and general preparation for modeling with sklearn.
 
-![Outliers Output]()
+![Outliers Output](/Images/outliers%20output.png)
 
 
 Data preprocessing steps are performed on a dataset containing information about cars. The process involves several key steps to ensure the dataset is cleaned and prepared for further analysis or modeling. Firstly, outliers in the 'odometer' and 'price' columns are identified and removed using both Z-score and interquartile range (IQR) methods. This helps to eliminate extreme values that could skew the analysis or modeling results. Additionally, unnecessary features such as 'VIN' and 'id' are dropped from the dataset to streamline the data.
@@ -192,7 +191,7 @@ Overall, these preprocessing steps ensure that the dataset is cleaned, standardi
 
 Here is the summary info of the clean dataset
 
-![Clean dataset]()
+![Clean dataset](/Images/Clean%20dataset.png)
 
 ### Preparing dataset for modeling
 
@@ -207,7 +206,7 @@ Additionally, the 'condition' feature, representing the condition of the vehicle
 Lastly, a correlation matrix is generated and visualized using a heatmap to examine the relationships between different features in the dataset. This analysis helps identify potential correlations between variables, providing insights into their interdependencies and informing feature selection for predictive modeling.
 
 
-![corr matrix]()
+![corr matrix](/Images/corr%20matrix.png)
 
 The correlation matrix, represented visually through a heatmap, provides valuable insights into the relationships between different variables, affirming and shedding light on initial assumptions.
 
@@ -234,7 +233,7 @@ Additionally, the code generates predictions for the training data and compares 
 
 Testing regression on the logarithm of price is essential for several reasons. Firstly, it helps address the issue of heteroscedasticity, where the variance of the residuals is not constant across all levels of the independent variables. By taking the logarithm of the price, we stabilize the variance of the target variable, making the model more robust and improving its predictive performance. Additionally, transforming the target variable can lead to a more linear relationship between the predictors and the target, which is a fundamental assumption of linear regression. Overall, testing regression on the log of price allows for a more accurate and interpretable modeling process, enhancing the reliability of the results and facilitating better decision-making in practical applications.
 
-![Price log reg]()
+![Price log reg](/Images/price%20log%20scatter.png)
 
 ### Linear Regression Model on Real Price values
 
@@ -245,7 +244,7 @@ R2 score of Linear Regression model is 0.59423
 
 The MSE quantifies the average squared difference between predicted and actual price values, providing insight into the accuracy of the model's predictions. Meanwhile, R^2 indicates the proportion of variance in the dependent variable (price) that is explained by the model. A higher R^2 value suggests that the model can better explain the variability in the data, indicating a better fit.
 
-![real price predictions]()
+![real price predictions](/Images/real%20price%20predictions.png)
 
 Furthermore, a scatter plot is generated to visualize the relationship between the true values of the price and the model's predictions. This plot allows for a visual assessment of how well the model's predictions align with the actual prices. By comparing the scatter plots of both the logarithmic and real price models, we can observe any differences in their predictive performance and better understand the effectiveness of each model in capturing the underlying patterns in the data.
 
@@ -253,7 +252,7 @@ Furthermore, a scatter plot is generated to visualize the relationship between t
 
 Polynomial regression model is implemented to capture potential nonlinear relationships between features and the target variable (price). The process begins by splitting the dataset into training and testing sets using the train_test_split function. The simple_cross_validation function is then defined to iterate through different polynomial degrees (ranging from 1 to 6). For each degree, a pipeline is constructed comprising three steps: polynomial feature transformation, standard scaling, and linear regression. The model is fitted to the training data, and the mean squared error (MSE) is calculated using the testing data.
 
-![best ploy degree]()
+![best ploy degree](/Images/best%20poly%20degree.png)
 
 During the cross-validation process, the model with the lowest MSE on the testing data is selected as the optimal model. In this case, the model with a polynomial degree of 5 is identified as providing the lowest MSE. Subsequently, a pipeline is created with the optimal polynomial degree, and the model is trained on the training data. The MSE is then computed for both the training and testing data to evaluate the model's performance.
 
@@ -262,9 +261,9 @@ Train MSE: 34966141.06217689
 
 Finally, scatter plots are generated to visualize the relationship between the true values of the price and the model's predictions for both the training and testing datasets. These plots allow for a visual assessment of how well the model's predictions align with the actual prices, providing insight into the model's accuracy and potential overfitting or underfitting issues. Overall, the implementation of polynomial regression enables the model to capture nonlinear patterns in the data, potentially improving its predictive performance compared to a simple linear regression model.
 
-![poly 5 predictions]()
+![poly 5 predictions](/Images/poly%205%20predictions.png)
 
-![poly 5 scatter]()
+![poly 5 scatter](/Images/poly%205%20scatter.png)
 
 
 ### Sequential Selector with PolynomialFeatures
@@ -273,13 +272,13 @@ In this code segment, a feature selection process is performed to identify the m
 
 Next, polynomial features of degree 5 are generated using the PolynomialFeatures class, capturing potential nonlinear relationships between features. These polynomial features are then transformed into all possible combinations and stored in a DataFrame named all_degree_5_combinations.
 
-![seq select poly 5]()
+![seq select poly 5](/Images/seq%20select%20poly%205.png)
 
 To perform feature selection, the SequentialFeatureSelector is utilized with a linear regression estimator. This selector evaluates different subsets of features and chooses the subset that minimizes the mean squared error (MSE). The best subset of features is determined based on the negative mean squared error score calculated during cross-validation.
 
 The selected features are then fitted to a Linear Regression model, and the coefficients of the selected features are obtained. These coefficients indicate the strength and direction of the relationship between each feature and the target variable (price). Finally, the top 7 features with the highest coefficients are printed, providing insight into which features are most influential in predicting the price of cars. Overall, this process helps to identify the most important features for building an effective predictive model.
 
-![top 7 seq features]()
+![top 7 seq features](/Images/top7%20seq%20features.png)
 
 ### Lasso Regression Model
 
@@ -296,7 +295,7 @@ After fitting the Lasso Regression model to the data, the best hyperparameters o
 Training MSE for lasso model: 66148755.526558325
 Testing MSE for lasso model: 66836063.56073399
 
-![Lasso Predictions]()
+![Lasso Predictions](/Images/Lasso%20Predictions.png)
 
 
 
@@ -308,7 +307,7 @@ First, the data is split into features (X) and the target variable (y). Then, a 
 
 A pipeline is constructed to streamline the preprocessing steps, which include the column transformation, feature scaling using StandardScaler, and the Ridge regression algorithm. The pipeline facilitates the sequential application of these transformations and the training of the model.
 
-![Ridge pipeline]()
+![Ridge pipeline](/Images/Ridge%20Pipeline.png)
 
 The Ridge Regression model is trained on the training data using the fit method of the pipeline. After training, the model's performance is evaluated on both the training and testing sets using mean squared error (MSE) and R-squared (R^2) as evaluation metrics. The MSE indicates the average squared difference between the predicted and actual prices, while R^2 measures the proportion of variance in the target variable that is explained by the model.
 
@@ -317,7 +316,7 @@ R^2 for Ridge Regression model : 0.769
 
 Finally, a scatter plot is created to visualize the relationship between the real prices and the model predictions on the testing set. This plot allows for a visual assessment of how well the model's predictions align with the actual prices, providing insights into the model's performance.
 
-![Ridge Predictions]()
+![Ridge Predictions](/Images/Ridge%20Predictions.png)
 
 
 ## Evaluation
@@ -334,7 +333,7 @@ transmission268519.246 +/- 16248.478
 
 Next, the coefficients of the Ridge regression model are examined to quantify the effect of each feature on car prices directly. The coefficients represent the change in the logarithm of car prices for a one-unit change in each feature. The top coefficients driving prices higher include the year of the car, specific manufacturers like Chevrolet and Ford, fuel type (diesel), and certain models like Q8 Premium and Super Duty. These coefficients provide insights into the relative importance of different features in determining car prices.
 
-![important Features]()
+![important Features](/Images/important%20features.png)
 
 The analysis suggests that newer model years, specific manufacturers, and certain models tend to command higher prices, while factors like odometer reading and certain manufacturers like Honda and Kia have negative coefficients, indicating lower prices. These findings provide valuable insights for car sellers, buyers, and industry stakeholders, enabling them to make informed decisions regarding pricing, marketing strategies, and product offerings. The combination of permutation importance and coefficient analysis offers a comprehensive understanding of the factors influencing car prices and can guide decision-making processes in the automotive industry.
 
