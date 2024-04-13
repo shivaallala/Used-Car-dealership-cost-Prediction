@@ -43,7 +43,6 @@ We will follow the CRISP-DM framework, a widely-used process in the industry for
 
 Our analysis aims to uncover insights into the factors driving used car prices, providing valuable guidance to consumers. We will highlight significant features and their impact on pricing, offering actionable recommendations for informed decision-making.
 
-
 ### Data Understand and Exploration:
 
 ![Cars Info](Used-Car-dealership-cost-Prediction/Images/Cars_info.png)
@@ -57,74 +56,85 @@ This dataset analysis provides insights into various attributes of used cars, in
 ##### Data Description
 
 1. **Region**
-    - The dataset contains entries from various regions.
-    - Columbus has the highest count (3608 entries), followed by Jacksonville (3562 entries).
-    - Some regions have very few entries, such as Southwest MS (14 entries), Kansas City (11 entries), and Fort Smith, AR (9 entries).
+
+   - The dataset contains entries from various regions.
+   - Columbus has the highest count (3608 entries), followed by Jacksonville (3562 entries).
+   - Some regions have very few entries, such as Southwest MS (14 entries), Kansas City (11 entries), and Fort Smith, AR (9 entries).
 
 2. **Manufacturer**
-    - Ford has the highest count with 70985 entries, followed by Chevrolet (55064 entries) and Toyota (34202 entries).
-    - Some manufacturers have relatively low counts, such as Ferrari (95 entries), Datsun (63 entries), and Morgan (3 entries).
+   - Ford has the highest count with 70985 entries, followed by Chevrolet (55064 entries) and Toyota (34202 entries).
+   - Some manufacturers have relatively low counts, such as Ferrari (95 entries), Datsun (63 entries), and Morgan (3 entries).
 
 ![Manufacturer by Average price](/Images/manufacturer%20by%20average%20price.png)
 
 3. **Model**
-    - The dataset includes a wide variety of car models.
-    - Popular models like F-150, Silverado 1500, and Camry have high counts.
-    - Many models have very low counts, indicating a diverse range of vehicles in the dataset.
+
+   - The dataset includes a wide variety of car models.
+   - Popular models like F-150, Silverado 1500, and Camry have high counts.
+   - Many models have very low counts, indicating a diverse range of vehicles in the dataset.
 
 4. **Condition**
-    - The majority of cars are listed in "good" or "excellent" condition.
-    - There are fewer listings in "like new" or "new" condition.
+
+   - The majority of cars are listed in "good" or "excellent" condition.
+   - There are fewer listings in "like new" or "new" condition.
 
 5. **Cylinders**
-    - Most cars have 6 cylinders, followed by 4 and 8 cylinders.
-    - Other cylinder counts are much less common.
+
+   - Most cars have 6 cylinders, followed by 4 and 8 cylinders.
+   - Other cylinder counts are much less common.
 
 6. **Fuel**
-    - Gasoline (gas) is the most common fuel type, followed by diesel and hybrid.
-    - Electric-powered cars have the lowest count.
+
+   - Gasoline (gas) is the most common fuel type, followed by diesel and hybrid.
+   - Electric-powered cars have the lowest count.
 
 7. **Title Status**
-    - The majority of cars have a "clean" title status.
-    - Some cars have "rebuilt" or "salvage" titles.
+
+   - The majority of cars have a "clean" title status.
+   - Some cars have "rebuilt" or "salvage" titles.
 
 8. **Transmission**
-    - Automatic transmission is the most common type.
-    - Manual transmission is less common.
+
+   - Automatic transmission is the most common type.
+   - Manual transmission is less common.
 
 9. **Drive**
-    - Cars with 4-wheel drive (4wd) have the highest count.
-    - Front-wheel drive (fwd) and rear-wheel drive (rwd) are also common.
+
+   - Cars with 4-wheel drive (4wd) have the highest count.
+   - Front-wheel drive (fwd) and rear-wheel drive (rwd) are also common.
 
 10. **Size**
+
     - Full-size vehicles are the most common, followed by mid-size and compact.
     - Sub-compact vehicles have relatively fewer entries.
 
 11. **Type**
+
     - Sedans are the most common type of vehicle, followed by SUVs and pickups.
     - Less common types include buses and off-road vehicles.
 
 12. **Paint Color**
+
     - White, black, and silver are the most popular paint colors.
     - Less common colors include purple and orange.
 
 13. **State**
+
     - California has the highest count of car listings, followed by Florida and Texas.
     - Some states have relatively few listings.
-    -Imbalanced Distribution: Attributes with highly imbalanced distributions, where one or a few categories dominate the majority of the data, may not contribute much to the model's performance. For example, the "state" attribute has highly imbalanced distributions, with some states having significantly more observations than others. Region attribute plays a similar role as it poses insigificant relevance to the analysis or prediction. Also evaluating 'region' attribute's cardinality expresses the high degree of unique values, approximately 404 unique values. Based on this rationale, it is deamed appropreiate to remove 'region' as well.
+      -Imbalanced Distribution: Attributes with highly imbalanced distributions, where one or a few categories dominate the majority of the data, may not contribute much to the model's performance. For example, the "state" attribute has highly imbalanced distributions, with some states having significantly more observations than others. Region attribute plays a similar role as it poses insigificant relevance to the analysis or prediction. Also evaluating 'region' attribute's cardinality expresses the high degree of unique values, approximately 404 unique values. Based on this rationale, it is deamed appropreiate to remove 'region' as well.
 
     ![State by Average Price](/Images/State%20by%20Average%20price.png)
 
 These insights provide valuable information about the distribution of car attributes in the dataset. Further analysis can be conducted to explore market trends, consumer preferences, and regional variations.
 
+##### Extreme outliers for price and odometer
 
- ##### Extreme outliers for price and odometer
+![num features stats](/Images/Num_feat_stats.png)
 
- ![num features stats](/Images/Num_feat_stats.png)
+![price and odometer boxplot](/Images/Price%20and%20Odometer%20boxplot.png)
 
- ![price and odometer boxplot](/Images/Price%20and%20Odometer%20boxplot.png)
-
- The dataset's average car price stands at $75,199.03, with a maximum recorded price reaching a staggering $3,736,928,711. Similarly, the average odometer reading for cars in the dataset is approximately 98,043.33 miles, with the maximum odometer reading reported at 10,000,000 miles. It's noteworthy that both price and odometer readings exhibit outliers, suggesting the presence of extreme values that may significantly skew the overall averages.Not to mention 32,895 price records have the value 0. These outliers could potentially indicate unique or rare instances within the dataset, warranting careful consideration during any analytical or modeling endeavors.
+The dataset's average car price stands at $75,199.03, with a maximum recorded price reaching a staggering $3,736,928,711. Similarly, the average odometer reading for cars in the dataset is approximately 98,043.33 miles, with the maximum odometer reading reported at 10,000,000 miles. It's noteworthy that both price and odometer readings exhibit outliers, suggesting the presence of extreme values that may significantly skew the overall averages.Not to mention 32,895 price records have the value 0. These outliers could potentially indicate unique or rare instances within the dataset, warranting careful consideration during any analytical or modeling endeavors.
 
 ### Hypothesis
 
@@ -133,7 +143,6 @@ Upon analyzing the dataset column by column, several observations and strategies
 ##### Dropping attributes:
 
 1. **ID:** We can safely drop this column as it serves as an index and does not provide meaningful information.
-   
 2. **VIN:** Since it serves as a unique identifier, we can safely drop this column.
 
 ##### Filling impurities:
@@ -164,7 +173,7 @@ With over 50% null values, this column may not provide useful information and co
 
 ##### Model:
 
-With a significant number of unique categorical values, we may need to reduce categories or address null values later. 
+With a significant number of unique categorical values, we may need to reduce categories or address null values later.
 
 ##### Extensive data preparation:
 
@@ -174,20 +183,17 @@ With a significant number of unique categorical values, we may need to reduce ca
 
 Additionally, we'll remove records with incomplete data, retaining only those with meaningful information beyond just the price, state, and region.
 
-
 ## Data Preparation
 
 After our initial exploration and fine tuning of the business understanding, it is time to construct our final dataset prior to modeling. Here, we want to make sure to handle any integrity issues and cleaning, the engineering of new features, any transformations that we believe should happen (scaling, logarithms, normalization, etc.), and general preparation for modeling with sklearn.
 
 ![Outliers Output](/Images/outliers%20output.png)
 
-
 Data preprocessing steps are performed on a dataset containing information about cars. The process involves several key steps to ensure the dataset is cleaned and prepared for further analysis or modeling. Firstly, outliers in the 'odometer' and 'price' columns are identified and removed using both Z-score and interquartile range (IQR) methods. This helps to eliminate extreme values that could skew the analysis or modeling results. Additionally, unnecessary features such as 'VIN' and 'id' are dropped from the dataset to streamline the data.
 
 Following outlier removal and feature dropping, missing data in the dataset are imputed using appropriate strategies. The 'odometer' column's missing values are replaced with the mean, while missing values in the 'year' and 'cylinders' columns are filled with the most frequent values. Furthermore, categorical columns with missing values, including 'transmission', 'fuel', 'title_status', and others, are filled with the mode of each respective column. Finally, the 'model' feature is cleaned by removing models with fewer than 50 occurrences and splitting the remaining models based on space and forward slash separators.
 
 Overall, these preprocessing steps ensure that the dataset is cleaned, standardized, and ready for further analysis or modeling tasks. By addressing outliers, dropping unnecessary features, and imputing missing data, the dataset is better suited for extracting meaningful insights or building predictive models.
-
 
 Here is the summary info of the clean dataset
 
@@ -204,7 +210,6 @@ Once encoded, the original categorical features are dropped from the dataset, an
 Additionally, the 'condition' feature, representing the condition of the vehicle, is converted to a numeric scale ranging from 1 (salvage) to 6 (new) to facilitate analysis and modeling. This transformation allows for a more straightforward interpretation of the 'condition' feature's impact on the target variable.
 
 Lastly, a correlation matrix is generated and visualized using a heatmap to examine the relationships between different features in the dataset. This analysis helps identify potential correlations between variables, providing insights into their interdependencies and informing feature selection for predictive modeling.
-
 
 ![corr matrix](/Images/corr%20matrix.png)
 
@@ -265,7 +270,6 @@ Finally, scatter plots are generated to visualize the relationship between the t
 
 ![poly 5 scatter](/Images/poly%205%20scatter.png)
 
-
 ### Sequential Selector with PolynomialFeatures
 
 In this code segment, a feature selection process is performed to identify the most relevant features for predicting the price of cars. Initially, the dataset is split into features (X) and the target variable (y), which is the price of the cars. Then, the dataset is further split into training and testing sets using the train_test_split function with a random state of 42 and a test size of 30%.
@@ -282,13 +286,13 @@ The selected features are then fitted to a Linear Regression model, and the coef
 
 ### Lasso Regression Model
 
- Lasso Regression model is implemented and optimized using GridSearchCV. The dataset is prepared by splitting it into features (X) and the target variable (y), which represents the price of cars. Then, the data is further split into training and testing sets using the train_test_split function with a random state of 42 and a test size of 30%.
+Lasso Regression model is implemented and optimized using GridSearchCV. The dataset is prepared by splitting it into features (X) and the target variable (y), which represents the price of cars. Then, the data is further split into training and testing sets using the train_test_split function with a random state of 42 and a test size of 30%.
 
 For the Lasso Regression model, a pipeline is constructed consisting of three steps: polynomial feature generation with a degree of 5, feature scaling using StandardScaler, and the Lasso regression algorithm itself. This pipeline allows for seamless integration of data preprocessing and model training.
 
 GridSearchCV is then employed to search for the optimal value of the alpha hyperparameter, which controls the strength of regularization in the Lasso model. The grid search is performed using a dictionary of alpha values, and the scoring metric chosen for optimization is the negative mean squared error (neg_mean_squared_error) using a 3-fold cross-validation strategy.
 
-{'lasso__alpha': 0.0001}
+{'lasso\_\_alpha': 0.0001}
 
 After fitting the Lasso Regression model to the data, the best hyperparameters obtained from the grid search are printed. Additionally, the mean squared error (MSE) is calculated for both the training and testing sets to evaluate the model's performance. Finally, the actual and predicted values of the target variable from the training set are stored in a DataFrame for further analysis. Overall, this code segment demonstrates the implementation and optimization of the Lasso Regression model for predicting car prices.
 
@@ -296,8 +300,6 @@ Training MSE for lasso model: 66148755.526558325
 Testing MSE for lasso model: 66836063.56073399
 
 ![Lasso Predictions](/Images/Lasso%20Predictions.png)
-
-
 
 ### Ridge Regression Model with One-Hot Encoding
 
@@ -318,7 +320,6 @@ Finally, a scatter plot is created to visualize the relationship between the rea
 
 ![Ridge Predictions](/Images/Ridge%20Predictions.png)
 
-
 ## Evaluation
 
 ### Permuatation Importance of Ridge Model with one-hot encoding
@@ -328,17 +329,18 @@ Permutation importance and coefficient analysis are performed to understand the 
 First, permutation importance analysis is conducted to determine the importance of each feature in predicting the logarithm of car prices. This analysis ranks the features based on how much the model's performance decreases when the values of each feature are randomly shuffled. The top three influential features identified through permutation importance are model, manufacturer, and transmission, suggesting their significant impact on price prediction.
 
 manufacturer47118178.000 +/- 595651.020
-model   38974571.439 +/- 624355.879
+model 38974571.439 +/- 624355.879
 transmission268519.246 +/- 16248.478
 
 Next, the coefficients of the Ridge regression model are examined to quantify the effect of each feature on car prices directly. The coefficients represent the change in the logarithm of car prices for a one-unit change in each feature. The top coefficients driving prices higher include the year of the car, specific manufacturers like Chevrolet and Ford, fuel type (diesel), and certain models like Q8 Premium and Super Duty. These coefficients provide insights into the relative importance of different features in determining car prices.
 
 ![important Features](/Images/important%20features.png)
 
+## Deployment
+
 The analysis suggests that newer model years, specific manufacturers, and certain models tend to command higher prices, while factors like odometer reading and certain manufacturers like Honda and Kia have negative coefficients, indicating lower prices. These findings provide valuable insights for car sellers, buyers, and industry stakeholders, enabling them to make informed decisions regarding pricing, marketing strategies, and product offerings. The combination of permutation importance and coefficient analysis offers a comprehensive understanding of the factors influencing car prices and can guide decision-making processes in the automotive industry.
 
-
-## Deployment
+## Next Steps
 
 Improving dataset quality is indeed a critical next step for enhancing model accuracy and reliability. This involves addressing missing values, duplicates, and outliers. Strategies such as imputation, removal, or advanced techniques like predictive modeling to fill in missing values can be employed. Additionally, thorough data cleaning processes can help identify and handle duplicates and outliers appropriately to prevent them from skewing the model's performance.
 
@@ -351,4 +353,3 @@ Furthermore, developing more nuanced pricing models beyond simple linear or ridg
 Conducting comprehensive market analyses, including competitor analysis, customer segmentation, and demand forecasting, can provide valuable insights into market dynamics and help identify untapped opportunities for pricing optimization. Continuous monitoring of market trends and consumer behavior allows for timely adjustments to pricing strategies, ensuring competitiveness and profitability in the dynamic automotive market landscape.
 
 In summary, focusing on dataset quality improvement, conducting further analysis on mileage impact, leveraging model popularity insights, exploring advanced modeling techniques, and conducting comprehensive market analyses are recommended next steps to enhance pricing strategies and decision-making processes in the automotive industry.
-
