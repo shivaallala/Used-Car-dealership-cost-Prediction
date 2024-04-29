@@ -66,6 +66,8 @@ This dataset analysis provides insights into various attributes of used cars, in
     - Ford has the highest count with 70985 entries, followed by Chevrolet (55064 entries) and Toyota (34202 entries).
     - Some manufacturers have relatively low counts, such as Ferrari (95 entries), Datsun (63 entries), and Morgan (3 entries).
 
+![Manufacturer by Average price]()
+
 3. **Model**
     - The dataset includes a wide variety of car models.
     - Popular models like F-150, Silverado 1500, and Camry have high counts.
@@ -110,11 +112,66 @@ This dataset analysis provides insights into various attributes of used cars, in
 13. **State**
     - California has the highest count of car listings, followed by Florida and Texas.
     - Some states have relatively few listings.
+    -Imbalanced Distribution: Attributes with highly imbalanced distributions, where one or a few categories dominate the majority of the data, may not contribute much to the model's performance. For example, the "state" attribute has highly imbalanced distributions, with some states having significantly more observations than others. Region attribute plays a similar role as it poses insigificant relevance to the analysis or prediction. Also evaluating 'region' attribute's cardinality expresses the high degree of unique values, approximately 404 unique values. Based on this rationale, it is deamed appropreiate to remove 'region' as well.
 
-## Conclusion
+    ![State by Average Price]()
 
 These insights provide valuable information about the distribution of car attributes in the dataset. Further analysis can be conducted to explore market trends, consumer preferences, and regional variations.
- 
 
 
+ ##### Extreme outliers for price and odometer
+
+ ![num features stats]()
+
+ ![price and odometer boxplot]()
+
+ The dataset's average car price stands at $75,199.03, with a maximum recorded price reaching a staggering $3,736,928,711. Similarly, the average odometer reading for cars in the dataset is approximately 98,043.33 miles, with the maximum odometer reading reported at 10,000,000 miles. It's noteworthy that both price and odometer readings exhibit outliers, suggesting the presence of extreme values that may significantly skew the overall averages.Not to mention 32,895 price records have the value 0. These outliers could potentially indicate unique or rare instances within the dataset, warranting careful consideration during any analytical or modeling endeavors.
+
+### Hypothesis
+
+Upon analyzing the dataset column by column, several observations and strategies for data preprocessing emerge:
+
+#### Dropping attributes:
+
+1. **ID:** We can safely drop this column as it serves as an index and does not provide meaningful information.
+   
+2. **VIN:** Since it serves as a unique identifier, we can safely drop this column.
+
+#### Filling impurities:
+
+1. **Year:** We can replace missing values with the most frequent year observed in the dataset.
+
+2. **Manufacturer:** Despite some null values, we can impute them with the most frequently observed manufacturer.
+
+3. **Cylinders:** Convert this column to numerical and replace missing values with the most frequent value, considering the risk of imputing nearly half of null values.
+
+4. **Drive:** While important, this feature has a high percentage of null values. We'll impute them with the most frequent value, ensuring it doesn't exceed 50% of the total dataset.
+
+#### State and Region:
+
+These are categorical variables without null values, so no action is needed.
+
+#### Transmission, Fuel, Title Status, Condition:
+
+For these categorical variables, we will replace missing values with the most frequently occurring value.
+
+#### Type and Paint Color:
+
+We will replace missing values with the most frequently occurring value for each.
+
+#### Size:
+
+With over 50% null values, this column may not provide useful information and could be dropped after further processing.
+
+#### Model:
+
+With a significant number of unique categorical values, we may need to reduce categories or address null values later. 
+
+#### Extensive data preparation:
+
+1. **Price:** As the target variable, some entries have a value of 0, which we will replace with the mean value. Although, certain extreme outliers could impact the mean, which will need to removed before calculating mean.
+
+2. **Odometer:** Missing values can be imputed by averaging the odometer readings of all vehicles. Although, certain extreme outliers could impact the mean, which will need to removed before calculating mean.
+
+Additionally, we'll remove records with incomplete data, retaining only those with meaningful information beyond just the price, state, and region.
 
